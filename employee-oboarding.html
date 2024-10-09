@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button and Image Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            background-color: #000000;
+        }
+
+        button {
+            position: relative;
+            padding: 10px 50px;
+            font-weight: 600;
+            font-size: 30px;
+            border-radius: 20px;
+            color: rgb(130, 130, 130);
+            border: none;
+            outline: none;
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+
+        button:hover {
+            background-color: #3700b3;
+            padding: 20px 60px;
+            cursor: pointer;
+            color: white;
+            letter-spacing: 1.5px;
+            box-shadow: 0px 20px 20px #3700b3;
+        }
+
+        button::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -60%;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        button:hover::after {
+            bottom: -40%;
+        }
+
+        .ani-b {
+            position: relative;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .card img {
+            width: 60px;
+            position: absolute;
+            left: 80px; /* Start off-screen to the left */
+            bottom: -27px;
+            transition: all 1s ease-in-out;
+            box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            display: none;
+            background-color: red;
+        }
+
+        .ani-b:hover .card img {
+            animation: mycard 1.5s forwards; /* Start animation on hover */
+            display: block;
+        }
+
+        @keyframes mycard {
+            0% {
+                left: 80px;
+                bottom: -27px;
+                transform: rotate(0deg) skew(0deg);
+            }
+            50% {
+                left: -20%; /* Midway point */
+                bottom: 60px;
+                transform: rotate(180deg) skew(0deg); /* Rotate and skew */
+            }
+            100% {
+                left: 90%; /* End position */
+                bottom: 65px;
+                transform: rotate(360deg) skew(0deg); /* Complete rotation */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="ani-b">
+            <button>Buy Now</button>
+            <div class="card">
+                <img src="./img/card.png" alt="Card Image">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
